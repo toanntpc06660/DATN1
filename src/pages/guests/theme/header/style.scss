@@ -1,0 +1,385 @@
+@use "sass:map";
+@import "style/pages/all";
+
+$bannerImg: "/assets/users/images/hero/banner.jpg";
+
+.header_top {
+    background: #f5f5f5;
+
+    .header_top_left {
+        ul {
+            display: flex;
+            align-items: center;
+            padding: 10px 0 13px;
+            list-style: none;
+            column-gap: 20px;
+
+            li {
+                font-size: 14px;
+                color: map.get($theme-color, "normal-text");
+                display: flex;
+                align-items: center;
+                column-gap: 8px; // Tăng khoảng cách giữa icon và văn bản
+
+                svg {
+                    font-size: 20px; // Kích thước biểu tượng
+                    color: map.get($theme-color, "normal-text"); // Màu biểu tượng
+                }
+
+                &:hover {
+                    color: map.get($theme-color, "main");
+                }
+
+                &::after {
+                    position: absolute;
+                    right: -10px;
+                    top: 1px;
+                    height: 20px;
+                    width: 1px;
+                    background: #000000;
+                    opacity: 0.1;
+                    content: "";
+                }
+            }
+        }
+    }
+
+    .header_top_right {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 10px 0 13px;
+
+        ul {
+            display: flex;
+            list-style: none;
+            column-gap: 15px;
+
+            li {
+                display: flex;
+                align-items: center;
+                font-size: 14px;
+                color: map.get($theme-color, "normal-text");
+
+                svg {
+                    font-size: 20px; // Kích thước biểu tượng
+                }
+
+                &.nav-item {
+                    position: relative;
+
+                    .nav-link {
+                        color: map.get($theme-color, "normal-text");
+                        text-decoration: none;
+                        font-size: 14px;
+                        display: flex;
+                        align-items: center;
+
+                        svg {
+                            margin-right: 5px; // Khoảng cách giữa biểu tượng và văn bản
+                        }
+
+                        &:hover {
+                            color: map.get($theme-color, "main");
+                        }
+                    }
+
+                    .dropdown-menu {
+                        background: #222222;
+                        position: absolute;
+                        top: 100%;
+                        right: 0;
+                        width: 200px;
+                        z-index: 9;
+                        padding: 10px 0;
+                        opacity: 0;
+                        visibility: hidden;
+                        transition: opacity 0.3s, visibility 0.3s;
+                        list-style: none;
+
+                        .dropdown-item {
+                            color: #ffffff;
+                            padding: 10px 15px;
+                            text-decoration: none;
+                            display: block;
+
+                            &:hover {
+                                background: map.get($theme-color, "main");
+                                color: #ffffff;
+                            }
+                        }
+                    }
+
+                    &:hover .dropdown-menu {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+                }
+
+                span {
+                    margin-left: 5px;
+                    font-size: 14px;
+                }
+            }
+
+            // Link component adjustments
+            a {
+                text-decoration: none;
+                color: inherit;
+
+                &:hover {
+                    color: map.get($theme-color, "main");
+                }
+            }
+        }
+    }
+}
+
+.header_logo {
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;  // Căn giữa theo chiều ngang
+    align-items: center;      // Căn giữa theo chiều dọc
+
+    .header_logo_img {
+        width: 20%;
+        margin: 0;
+        transition: transform 0.3s ease, box-shadow 0.3s ease; // Thêm hiệu ứng chuyển động
+
+        &:hover {
+            transform: scale(1.6); // Phóng to hình ảnh khi hover
+            filter: brightness(1.1); // Làm sáng logo khi hover
+        }
+    }
+}
+
+.header_menu {
+    padding: 24px 0;
+
+    ul {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+
+        li {
+            list-style: none;
+            position: relative;
+
+            a {
+                text-decoration: none;
+                font-size: 14px;
+                color: map.get($theme-color, "bold-text");
+                text-transform: uppercase;
+                font-weight: bold;
+                letter-spacing: 2px;
+                transition: color 0.3s, transform 0.3s; // Thêm hiệu ứng chuyển màu và phóng to
+                padding: 5px 0;
+                display: block;
+
+                &:hover {
+                    color: map.get($theme-color, "main");
+                    transform: scale(1.1); // Phóng to khi hover
+                }
+            }
+        }
+
+        li:hover .header_menu_dropdown {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0); // Hiển thị dropdown khi hover
+        }
+
+        .header_menu_dropdown {
+            background: #222222;
+            position: absolute;
+            width: 180px;
+            z-index: 9;
+            padding: 5px 0;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px); // Bắt đầu từ trên cùng
+            transition: opacity 0.3s ease, transform 0.3s ease; // Hiệu ứng chuyển động mượt mà
+
+            li {
+                a {
+                    text-transform: capitalize;
+                    color: #ffffff;
+                    font-weight: 400;
+                    padding: 5px 15px;
+                    transition: background 0.3s ease, color 0.3s ease; // Hiệu ứng chuyển màu mượt mà
+
+                    &:hover {
+                        color: map.get($theme-color, "main");
+                        background: #f7ffff;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.header_cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px 0;
+    background: transparent;
+
+    ul {
+        display: flex;
+        margin-right: 25px;
+
+        li {
+            list-style: none;
+            position: relative;
+            margin-left: 25px;
+            transition: transform 0.3s, box-shadow 0.3s; // Thêm hiệu ứng chuyển động
+
+            &:hover {
+                transform: scale(1.3); // Phóng to khi hover
+                background: transparent; // Đảm bảo không có màu nền trắng
+            }
+
+            svg {
+                font-size: 25px;
+                color: map.get($theme-color, "normal-text");
+                transition: color 0.3s; // Thêm hiệu ứng chuyển màu
+            }
+
+            &:hover svg {
+                color: map.get($theme-color, "main"); // Thay đổi màu khi hover
+            }
+
+            span {
+                color: white;
+                background: map.get($theme-color, "main");
+                position: absolute;
+                height: 20px;
+                width: 20px;
+                border-radius: 50%;
+                display: inline-block;
+                text-align: center;
+                line-height: 20px;
+                font-size: 13px;
+                font-weight: 500;
+                left: 20px;
+                top: -2px;
+                transition: background 0.3s, color 0.3s; // Thêm hiệu ứng chuyển màu
+
+                &:hover {
+                    background: lighten(map.get($theme-color, "main"), 10%); // Làm sáng nền khi hover
+                    color: darken(map.get($theme-color, "main"), 20%); // Thay đổi màu văn bản khi hover
+                }
+            }
+        }
+    }
+}
+
+.hero_categories {
+    position: relative;
+
+    .hero_categories_all {
+        background: map.get($theme-color, "main");
+        padding: 15px 25px 15px 40px;
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        color: #ffffff;
+        font-size: 700;
+
+        svg,
+        span {
+            font-size: 16px;
+            margin-right: 5px;
+        }
+
+        svg {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        &:hover {
+            background: darken(map.get($theme-color, "main"), 10%);
+        }
+    }
+
+    ul {
+        border: 1px solid #ebebeb;
+        position: absolute;
+        width: 99%;
+        background: #ffffff;
+        opacity: 1;
+        transition: all 0.2s;
+
+        li {
+            list-style: none;
+
+            a {
+                text-decoration: none;
+                background-color: transparent;
+                font-size: 16px;
+                color: map.get($theme-color, "normal-text");
+                line-height: 39px;
+                display: block;
+                padding-left: 40px;
+
+                &:hover {
+                    color: map.get($theme-color, "main");
+                    background: #f7ffff;
+                }
+            }
+        }
+
+        &.hidden {
+            opacity: 0;
+        }
+    }
+}
+
+.hero_search_container {
+
+    .hero_search_form {
+        width: 610px;
+        height: 50px;
+        float: left;
+        padding-left: 15px;
+        margin-bottom: 30px;
+
+        form {
+            display: flex;
+            align-items: center;
+        }
+
+        input {
+            border: none;
+            height: 48px;
+            font-size: 16px;
+            color: #b2b2b2;
+            padding-left: 20px;
+            border: 1px solid #ebebeb;
+            width: 70%;
+
+            &:focus {
+                outline: none;
+                border: none;
+            }
+        }
+
+        button {
+            font-size: 14px;
+            color: #ffffff;
+            font-weight: 800;
+            text-transform: uppercase;
+            height: 48px;
+            line-height: 48px;
+            border: none;
+            width: 30%;
+            background: map.get($theme-color, "main");
+
+            &:hover {
+                background: darken(map.get($theme-color, "main"), 10%);
+            }
+        }
+    }
+}

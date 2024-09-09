@@ -1,0 +1,10 @@
+@use "sass:map";
+@import "style/pages/theme";
+.cotainer {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 20px;
+    padding-bottom: 30px;
+    width: 600px;
+}

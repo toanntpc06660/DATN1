@@ -1,0 +1,124 @@
+$sidebar-bg: #2c3e50;
+$sidebar-hover-bg: #34495e;
+$link-color: #ecf0f1;
+$link-hover-color: #1abc9c;
+$icon-color: #ecf0f1;
+$navbar-height: 20px; // Chiều cao của navbar
+$sidebar-width: 250px; // Chiều rộng của sidebar
+$logout-btn-margin: 10px; // Khoảng cách từ nút đăng xuất đến các biểu tượng mạng xã hội
+
+.sidebarsAdmin {
+  margin: 10px;
+  width: $sidebar-width;
+  background-color: $sidebar-bg;
+  height: calc(100vh - #{$navbar-height}); // Chiều cao sidebar tính theo chiều cao navbar
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: $navbar-height; // Đặt bên dưới navbar
+  left: 0;
+  padding: 20px 20px 0 20px; // Padding trên, trái, phải là 20px, padding dưới là 0
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  overflow-y: auto; // Thêm thanh cuộn nếu cần thiết
+
+  .sidebar-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .user-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px; // Khoảng cách giữa hình ảnh và tên
+    }
+
+    .user-name {
+      color: $link-color;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center; // Canh giữa tên người dùng
+    }
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    li {
+      margin-bottom: 15px;
+
+      a {
+        color: $link-color;
+        text-decoration: none;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        border-radius: 5px;
+        transition: background-color 0.3s, color 0.3s;
+
+        &:hover {
+          background-color: $sidebar-hover-bg;
+          color: $link-hover-color;
+        }
+
+        .sidebar-icon {
+          font-size: 20px;
+          color: $icon-color;
+        }
+      }
+    }
+  }
+
+  .sidebar-footer {
+    padding: 30px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+
+    .logout-btn {
+      background: none;
+      border: none;
+      color: $link-color;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      margin-bottom: $logout-btn-margin;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $link-hover-color;
+      }
+
+      .logout-icon {
+        font-size: 20px;
+      }
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 15px;
+
+      .social-icon {
+        color: $link-color;
+        font-size: 20px;
+        transition: color 0.3s;
+
+        &:hover {
+          color: $link-hover-color;
+        }
+      }
+    }
+  }
+}

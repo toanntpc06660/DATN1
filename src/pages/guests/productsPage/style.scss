@@ -1,0 +1,76 @@
+@use "sass:map";
+@import "style/pages/theme";
+
+
+.container {
+
+    .sidebar {
+        padding-right: 20px;
+
+        .sidebar_item {
+            margin-bottom: 20px;
+
+            h2 {
+                color: rgb(28, 28, 28);
+                font-weight: 700;
+                margin-bottom: 10px;
+            }
+
+            .price-range-wrap {
+                display: flex;
+                flex-direction: column;
+                row-gap: 10px;
+            }
+
+            .tags {
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+
+                .tag {
+                    font-size: 12px;
+                    color: #6f6f6f;
+                    display: inline-block;
+                    padding: 8px 25px 6px;
+                    cursor: pointer;
+                    background: #f5f5f5;
+                    margin-bottom: 0;
+
+                    &:hover, &:active {
+                        color: #ffffff;
+                        background: map.get($theme-color, "main");
+                        
+                    }
+                }
+            }
+        }
+    }
+    .pagination-controls {
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+
+        button {
+            background-color: map.get($theme-color, "main"); // Màu nền của nút
+            border: none;
+            color: #ffffff; // Màu chữ
+            padding: 10px 20px; // Khoảng cách bên trong nút
+            margin: 0 5px; // Khoảng cách giữa các nút
+            border-radius: 5px; // Bo góc cho nút
+            font-size: 16px; // Kích thước chữ
+            cursor: pointer; // Con trỏ khi di chuột lên nút
+            transition: background-color 0.3s, box-shadow 0.3s; // Hiệu ứng chuyển màu và bóng
+
+            &:hover {
+                background-color: map.get($theme-color, "hover"); // Màu nền khi hover
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); // Bóng đổ khi hover
+            }
+
+            &:disabled {
+                background-color: #cccccc; // Màu nền của nút khi vô hiệu hóa
+                color: #666666; // Màu chữ của nút khi vô hiệu hóa
+                cursor: not-allowed; // Con trỏ khi nút bị vô hiệu hóa
+            }
+        }
+    }
+}

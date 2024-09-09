@@ -1,0 +1,190 @@
+@use "sass:map";
+@import "style/pages/theme";
+
+.container {
+  padding: 20px;
+
+  .bill-container {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+
+  .bill-header {
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+
+  .bill-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+  }
+
+  .bill-id,
+  .bill-date {
+    font-size: 16px;
+    color: #555;
+  }
+
+  .bill-body {
+    padding: 1rem;
+
+    .order-items-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+
+    .order-item {
+      background-color: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      padding: 1rem;
+      align-items: center;
+      transition: transform 0.2s ease;
+      
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
+
+      .product-image {
+        width: 100px;
+        height: auto;
+        border-radius: 8px;
+        margin-right: 1rem;
+      }
+
+      .item-details {
+        flex: 1;
+
+        .product-name {
+          font-size: 1.2rem;
+          margin-bottom: 0.5rem;
+          font-weight: bold;
+          color: #333;
+        }
+
+        .product-size,
+        .product-price,
+        .product-quantity,
+        .product-total {
+          margin-bottom: 0.5rem;
+          color: #666;
+        }
+      }
+    }
+
+    .no-data {
+      text-align: center;
+      color: #888;
+      font-size: 1.2rem;
+    }
+  }
+
+  .bill-footer {
+    border-top: 2px solid #ddd;
+    padding-top: 20px;
+    text-align: center;
+    background: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .status-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .status-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 120px;
+    padding: 1rem;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
+    color: #888;
+    opacity: 0.5;
+    
+    .status-icon {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+  
+    .status-text {
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+  
+    &.active {
+      color: #007bff;
+      border: 2px solid #007bff;
+      opacity: 1;
+    }
+  
+    &.completed {
+      color: #28a745;
+      border: 2px solid #28a745;
+    }
+  }
+  
+  .status-divider {
+    height: 2px; /* Điều chỉnh chiều cao thành 2px để tạo ra dấu gạch ngang */
+    width: 100px; /* Điều chỉnh chiều rộng của dấu nối để phù hợp */
+    background-color: #ddd;
+    position: relative;
+    margin: 0 10px; /* Thêm khoảng cách giữa các dấu nối */
+    
+    &.active {
+      background-color: #007bff;
+    }
+  }
+  
+  
+  
+  .status-pending {
+    color: #ffc107;
+    border: 2px solid #ffc107;
+  }
+  
+  .status-confirmed {
+    color: #28a745;
+    border: 2px solid #28a745;
+  }
+  
+  .status-shipping {
+    color: #17a2b8;
+    border: 2px solid #17a2b8;
+  }
+  
+  .status-delivered {
+    color: #007bff;
+    border: 2px solid #007bff;
+  }
+  
+  .status-canceled {
+    color: #dc3545;
+    border: 2px solid #dc3545;
+  }
+  
+  .bill-total {
+    text-align: center;
+    padding-top: 20px;
+    font-weight: 700;
+    font-size: larger;
+  }
+  
+}

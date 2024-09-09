@@ -1,0 +1,243 @@
+@use "sass:map";
+@import "style/pages/theme";
+
+.product_details_pic {
+    display: flex;
+    margin-bottom: 20px;
+    gap: 20px;
+    flex-wrap: wrap; // Đảm bảo các phần tử không bị tràn khi màn hình nhỏ hơn
+
+    .main-image {
+        flex: 2; // Hình lớn chiếm nhiều diện tích hơn
+        display: flex;
+        justify-content: center;
+
+        img {
+            width: 100%;
+            max-width: 600px; // Giới hạn kích thước tối đa của hình lớn
+            height: auto; // Đảm bảo tỷ lệ khung hình được giữ nguyên
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .image-thumbnails {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        img {
+            width: 80px; // Đặt kích thước cố định cho hình thu nhỏ
+            height: 80px; // Đặt kích thước cố định cho hình thu nhỏ
+            object-fit: cover; // Đảm bảo hình ảnh không bị biến dạng và giữ tỷ lệ khung hình
+            border-radius: 5px;
+            cursor: pointer;
+            border: 2px solid transparent; // Khung viền mặc định
+
+            &.selected-thumbnail {
+                border-color: #007bff; // Màu viền cho hình được chọn
+            }
+        }
+    }
+}
+
+// Media query cho màn hình nhỏ hơn
+@media (max-width: 768px) {
+    .product_details_pic {
+        flex-direction: column; // Sắp xếp theo cột khi màn hình nhỏ
+        align-items: center; // Căn giữa các phần tử
+    }
+
+    .main-image, .image-thumbnails {
+        flex: none; // Đặt lại giá trị flex cho các phần tử khi màn hình nhỏ
+    }
+
+    .main-image img {
+        max-width: 100%; // Đảm bảo hình lớn không vượt quá kích thước của màn hình
+    }
+
+    .image-thumbnails img {
+        width: 60px; // Giảm kích thước hình thu nhỏ khi màn hình nhỏ
+        height: 60px; // Giảm kích thước hình thu nhỏ khi màn hình nhỏ
+    }
+}
+
+
+
+.product_details_text {
+    h2 {
+        color: #252525;
+        font-weight: 700;
+        margin-bottom: 20px; // Thêm khoảng cách dưới tiêu đề
+    }
+
+    h3 {
+        margin-bottom: 20px; // Thêm khoảng cách dưới giá sản phẩm
+    }
+
+    p {
+        margin: 10px 0;
+        line-height: 25px;
+    }
+
+    ul {
+        margin: 20px 0;
+        border-top: 1px solid #eee;
+        padding-top: 20px;
+
+        li {
+            list-style: none;
+            display: flex;
+            column-gap: 20px;
+            line-height: 35px;
+
+            b {
+                width: 150px;
+            }
+
+            span {
+                display: flex;
+                column-gap: 10px;
+                align-items: center;
+            }
+        }
+    }
+
+    .quantity-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        .quantity-input {
+            width: 40px;
+            padding: 5px;
+            outline: none;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 5px; // Thêm bo góc cho input
+            text-align: center; // Canh giữa số trong input
+        }
+
+        .quantity-controls .quantity-button {
+            width: 15px;
+            /* Đảm bảo kích thước nút nhất quán */
+            height: 30px;
+            border: 1px solid #ddd;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 5px;
+            /* Thêm bo góc cho nút */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+
+    .btn_favourite{
+        margin-left: 15px;
+    }
+    button {
+        font-size: 14px;
+        color: #ffffff;
+        font-weight: 800;
+        text-transform: uppercase;
+        padding: 16px 30px 17px;
+        background: map.get($theme-color, "main");
+        border: none;
+        border-radius: 5px; // Thêm bo góc cho nút
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Thêm bóng đổ cho nút
+        cursor: pointer; // Thay đổi con trỏ khi hover vào nút
+        transition: background 0.3s ease; // Thêm hiệu ứng chuyển đổi màu nền
+
+        &:hover {
+            background: darken(map.get($theme-color, "main"), 10%);
+        }
+
+        &:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        svg {
+            margin-right: 5px;
+        }
+    }
+
+
+    
+    
+}
+
+
+
+.related-products {
+    margin-top: 50px;
+
+    h2 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .related-product-item {
+        position: relative;
+        text-align: center;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden; // Để đảm bảo hiệu ứng hover không bị tràn ra ngoài
+
+        img {
+            width: 365px;
+            height: auto;
+            border-bottom: 1px solid #ddd;
+            transition: transform 0.3s ease, opacity 0.3s ease; // Thêm hiệu ứng cho biến đổi hình ảnh
+        }
+
+        h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        p {
+            font-size: 16px;
+            color: #333;
+        }
+
+        .btn-detail {
+            display: inline-block;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #ffffff;
+            font-weight: bold;
+            text-transform: uppercase;
+            padding: 10px 20px;
+            background: #007bff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+            cursor: pointer;
+
+            &:hover {
+                background: #0056b3;
+            }
+        }
+
+        // Hiệu ứng hover cho phần tử
+        &:hover {
+            img {
+                transform: scale(0.8); // Phóng to hình ảnh khi hover
+                opacity: 1.2; // Tạo hiệu ứng mờ cho hình ảnh khi hover
+            }
+
+            .btn-detail {
+                background: #0056b3; // Thay đổi màu nền của nút khi hover
+            }
+        }
+    }
+}
+

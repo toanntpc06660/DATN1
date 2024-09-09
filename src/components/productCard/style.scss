@@ -1,0 +1,121 @@
+@use "sass:map";
+@import "style/pages/all";
+
+.featured_item {
+    margin-bottom: 50px;
+    text-align: center;
+    border: 1px solid #ebebeb; // Đường viền bao quanh toàn bộ phần tử
+    border-radius: 8px; // Bo góc cho phần tử
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Thêm bóng đổ nhẹ
+
+    &:hover {
+        .featured_item_pic_hover {
+            top: 80% !important;
+        }
+        // Thay đổi màu nền và thêm hiệu ứng khi hover
+        background-color: #f4f4f4;
+        transform: scale(1.02);
+        transition: transform 0.3s, background-color 0.3s;
+    }
+
+    .featured_item_pic {
+        height: 270px;
+        position: relative;
+        overflow: hidden;
+        background-position: center;
+        margin: 5px;
+        border-top-left-radius: 8px; // Bo góc cho phần hình
+        border-top-right-radius: 8px;
+
+        img {
+            height: 100%;
+            width: 100%;
+            object-fit: cover; // Đảm bảo ảnh không bị méo
+            transition: transform 0.3s; // Hiệu ứng chuyển động cho ảnh
+        }
+
+        &:hover img {
+            transform: scale(1.1); // Phóng to ảnh khi hover
+        }
+
+        .featured_item_pic_hover {
+            position: absolute;
+            left: 0;
+            top: 120%;
+            width: 100%;
+            text-align: center;
+            transition: top 0.5s;
+            color: #fff;
+            padding: 10px;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+
+            li {
+                list-style: none;
+                display: inline-block;
+                margin-right: 10px;
+
+                &:hover {
+                    svg {
+                        background: #3948ad;
+                        border-color: #3948ad;
+                        color: #ffffff;
+                        transform: rotate(360deg) !important;
+                    }
+                }
+
+                svg {
+                    padding: 10px;
+                    height: 20px;
+                    width: 20px;
+                    border: 1px solid #ebebeb;
+                    background: #ffffff;
+                    color: #565555;
+                    transition: all 0.3s;
+                    border-radius: 50%;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Thêm bóng đổ cho biểu tượng
+                }
+            }
+        }
+    }
+
+    .featured_item_text {
+        padding: 15px; // Thêm padding để tạo khoảng cách
+        background-color: #f9f9f9; // Màu nền cho phần text
+        border-top: 1px solid #ebebeb; // Đường viền giữa phần hình và text
+        border-bottom-left-radius: 8px; // Bo góc dưới cho phần text
+        border-bottom-right-radius: 8px;
+
+        h6 {
+            margin-top: 10px;
+            font-size: 16px;
+            font-weight: 400;
+
+            a {
+                color: map.get($theme-color, "normal-text");
+                text-decoration: none;
+                transition: color 0.3s;
+
+                &:hover {
+                    color: #3948ad; // Màu khi hover
+                }
+            }
+        }
+
+        .discounted_price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #e74c3c; // Màu đỏ cho giá mới
+            margin-top: 10px;
+            transition: color 0.3s;
+        }
+
+        .old_price {
+            font-size: 16px;
+            color: map.get($theme-color, "normal-text");
+            text-decoration: line-through;
+            margin-top: 5px;
+            transition: color 0.3s;
+        }
+    }
+}

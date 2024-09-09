@@ -1,0 +1,168 @@
+// style.scss
+
+// Sử dụng màu sắc đa dạng để làm cho giao diện hấp dẫn hơn
+$primary-color: #3498db;
+$secondary-color: #2ecc71;
+$warning-color: #e74c3c;
+$light-bg: #f4f4f4;
+$card-bg: #fff;
+$header-bg: #34495e;
+$footer-bg: #2c3e50;
+
+.admin-header {
+    background-color: $header-bg;
+    color: #fff;
+    padding: 15px 0;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+
+    .header-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+
+        h1 {
+            margin: 0;
+            font-size: 2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 20px;
+
+            li {
+                display: flex;
+                align-items: center;
+
+                a {
+                    color: #fff;
+                    text-decoration: none;
+                    font-size: 1.1rem;
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    transition: color 0.3s;
+
+                    &:hover {
+                        color: $secondary-color;
+                    }
+
+                    .header-icon {
+                        font-size: 1.2rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.admin-home {
+    padding: 20px;
+    background-color: $light-bg;
+    font-family: Arial, sans-serif;
+
+    .admin-stats {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 30px;
+
+        .stat-card {
+            background-color: $card-bg;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            width: 30%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: $primary-color;
+                color: #fff;
+            }
+
+            .stat-icon {
+                font-size: 3rem;
+                color: $primary-color;
+                margin-bottom: 10px;
+            }
+
+            h2 {
+                font-size: 1.6rem;
+                margin-bottom: 10px;
+            }
+
+            p {
+                font-size: 2rem;
+                margin: 0;
+            }
+        }
+    }
+
+    .admin-table {
+        h2 {
+            text-align: center;
+            font-size: 1.8rem;
+            color: $primary-color;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: $card-bg;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+            thead {
+                background-color: $primary-color;
+                color: #fff;
+
+                th {
+                    padding: 15px;
+                    text-align: left;
+                }
+            }
+
+            tbody {
+                tr {
+                    &:nth-child(even) {
+                        background-color: #f9f9f9;
+                    }
+
+                    td {
+                        padding: 15px;
+                        text-align: left;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.admin-footer {
+    background-color: $footer-bg;
+    color: #fff;
+    padding: 10px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        text-align: center;
+
+        p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+    }
+}

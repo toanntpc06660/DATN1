@@ -1,0 +1,22 @@
+$navbar-height: 60px; // Chiều cao của navbar
+$sidebar-width: 250px; // Chiều rộng của sidebar
+
+.admin-layout {
+  display: flex;
+  height: 100vh;
+  flex-direction: row;
+
+  .admin-main {
+    margin-left: $sidebar-width; // Để nội dung chính không bị che khuất bởi sidebar
+    width: calc(100% - #{$sidebar-width}); // Đảm bảo nội dung chính không bị tràn ra ngoài
+    display: flex;
+    flex-direction: column;
+  }
+
+  .admin-content {
+    flex: 1;
+    padding: 60px;
+    background-color: #f4f4f4; // Màu nền cho nội dung chính
+    overflow-y: auto; // Thêm thanh cuộn nếu nội dung quá dài
+  }
+}

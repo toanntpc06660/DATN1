@@ -1,0 +1,219 @@
+.admin-product-page {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    position: relative; /* Để overlay được định vị chính xác */
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+
+        h1 {
+            font-size: 24px;
+        }
+
+        .toggle-form-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: #0056b3;
+            }
+        }
+    }
+
+    .product-list {
+        margin-bottom: 20px;
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+
+            th, td {
+                padding: 12px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+
+            th {
+                background-color: #f4f4f4;
+            }
+
+            .product-image {
+                width: 100px;
+                height: auto;
+            }
+
+            .edit-button, .delete-button {
+                padding: 5px 10px;
+                border: none;
+                border-radius: 3px;
+                padding: 5px;
+                cursor: pointer;
+                font-size: 14px;
+                margin-right: 5px;
+
+                &.edit-button {
+                    background-color: #28a745;
+                    color: white;
+
+                    &:hover {
+                        background-color: #218838;
+                    }
+                }
+
+                &.delete-button {
+                    background-color: #dc3545;
+                    color: white;
+
+                    &:hover {
+                        background-color: #c82333;
+                    }
+                }
+            }
+        }
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Màu nền mờ để tạo overlay */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 999; /* Đặt lớp overlay ở trên cùng */
+        transition: opacity 0.3s ease; /* Hiệu ứng mờ dần */
+        opacity: 0;
+        visibility: hidden;
+
+        &.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .form-container {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 20px;
+            background-color: #f9f9f9;
+            max-width: 500px; /* Điều chỉnh kích thước form */
+            width: 100%; /* Đảm bảo form có thể mở rộng tối đa */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Thêm bóng đổ để form nổi bật */
+            position: relative; /* Để đảm bảo nút hủy nằm trong form */
+            transform: translateY(-50px);
+            opacity: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+
+            &.show {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            h2 {
+                margin-bottom: 20px;
+                font-size: 20px;
+            }
+
+            form {
+                display: flex;
+                flex-direction: column;
+
+                label {
+                    margin-bottom: 10px;
+                    font-size: 16px;
+
+                    input, textarea {
+                        width: 100%;
+                        padding: 8px;
+                        margin-top: 5px;
+                        border: 1px solid #ccc;
+                        border-radius: 4px;
+                    }
+
+                    textarea {
+                        height: 100px;
+                        resize: vertical;
+                    }
+                }
+
+                .submit-button, .cancel-button {
+                    padding: 10px 20px;
+                    border: none;
+                    border-radius: 5px;
+                    cursor: pointer;
+                    font-size: 16px;
+                    margin-top: 10px;
+                    transition: background-color 0.3s ease;
+
+                    &.submit-button {
+                        background-color: #007bff;
+                        color: white;
+
+                        &:hover {
+                            background-color: #0056b3;
+                        }
+                    }
+
+                    &.cancel-button {
+                        background-color: #6c757d;
+                        color: white;
+
+                        &:hover {
+                            background-color: #5a6268;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /* Phân trang */
+    .pagination {
+        display: flex;
+        list-style-type: none;
+        padding: 0;
+        margin: 20px 0;
+        justify-content: center;
+
+        .page-item {
+            margin: 0 5px;
+        }
+
+        .page-link {
+            display: block;
+            padding: 5px 10px;
+            text-decoration: none;
+            color: #007bff;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+
+            &:hover {
+                background-color: #e9ecef;
+                color: #0056b3;
+                cursor: pointer;
+            }
+        }
+
+        .active .page-link {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .page-item.disabled .page-link {
+            color: #6c757d;
+            pointer-events: none;
+        }
+    }
+}

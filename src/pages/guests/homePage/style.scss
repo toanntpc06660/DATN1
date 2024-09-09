@@ -1,0 +1,177 @@
+@use "sass:map";
+@import "style/pages/all";
+
+
+.carousel-container {
+    margin-bottom: 30px;
+    position: relative;
+    text-align: center;
+
+    .carousel-item {
+        display: inline-block;
+        position: relative;
+
+        img {
+            width: 1200px; // Kích thước cố định chiều rộng của hình ảnh
+            height: 440px; // Kích thước cố định chiều cao của hình ảnh
+            object-fit: cover; // Đảm bảo hình ảnh không bị biến dạng
+            border-radius: 10px;
+            margin: 0 auto; // Căn giữa hình ảnh trong mỗi mục carousel
+            transition: transform 0.3s ease, box-shadow 0.3s ease; // Hiệu ứng chuyển tiếp mượt mà cho cả transform và box-shadow
+        }
+
+        img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.5); // Lớp phủ màu trắng mờ
+            border-radius: 10px;
+            transform: scale(0); // Ẩn lớp phủ màu
+            transition: transform 0.3s ease; // Hiệu ứng chuyển tiếp mượt mà
+            z-index: 1;
+            animation: glow 1.5s infinite; // Hiệu ứng nhấp nháy
+        }
+
+        img:hover::after {
+            transform: scale(1); // Hiển thị lớp phủ màu khi hover
+        }
+
+        img:hover {
+            transform: scale(1.05); // Phóng to hình ảnh khi hover
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.7), 0 0 30px rgba(0, 255, 0, 0.5), 0 0 40px rgba(0, 0, 255, 0.3); // Phát sáng với màu sắc đa dạng
+        }
+    }
+
+    // Ẩn các nút điều hướng
+    .react-multiple-carousel__arrow {
+        display: none;
+    }
+
+    @keyframes glow {
+        0% {
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+        }
+        50% {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        }
+        100% {
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+// Featured Products
+.featured {
+    margin-top: 50px;
+    
+    .section-title {
+        margin-bottom: 50px;
+        text-align: center;
+
+        h2 {
+            position: relative;
+            font-size: 24px;  // Increased font size for better visibility
+        }
+
+        h2:after {
+            position: absolute;
+            left: 50%;
+            bottom: -15px;
+            height: 4px;
+            width: 80px;
+            background: map.get($theme-color, "main");
+            content: "";
+            transform: translateX(-50%);
+        }
+    }
+
+    .react-tabs {
+        ul {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 50px;
+            padding: 0;
+            list-style: none;
+
+            li {
+                font-size: 18px;
+                color: map.get($theme-color, "normal-text");
+                display: inline-block;
+                margin-right: 25px;
+                position: relative;
+                cursor: pointer;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}
+
+.banner {   
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+
+    .banner_pic {
+        position: relative;
+        width: 49%;
+        overflow: hidden;
+        border-radius: 10px;
+
+        img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease, filter 0.5s ease;
+
+            &:hover {
+                transform: scale(1.1);
+                filter: brightness(0.8);
+            }
+        }
+
+        .banner_overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        .banner_text {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: #fff;
+            font-size: 24px;
+            font-weight: bold;
+            transition: transform 0.5s ease, opacity 0.5s ease;
+
+            &:hover {
+                transform: translateY(-10px);
+                opacity: 1;
+            }
+        }
+    }
+}
+

@@ -1,0 +1,277 @@
+@use "sass:map";
+@import "style/pages/theme";
+
+$product-bg-color: #f9f9f9;
+$product-border-color: #dee2e6;
+$product-text-color: #333;
+$product-header-bg-color: #d19c97;
+$product-header-text-color: #fff;
+$product-hover-bg-color: #f1f1f1;
+$product-remove-btn-bg-color: #dc3545;
+$product-remove-btn-hover-bg-color: #c82333;
+$btn-bg-color: #ff9d00;
+$btn-hover-bg-color: #b35100;
+
+// Thiết lập biến màu sắc và kiểu
+$summary-bg-color: #ffffff;
+$summary-border-color: #e0e0e0;
+$summary-header-bg-color: #ff9d00;
+$summary-header-text-color: #fff;
+$summary-btn-bg-color: #ff7f00;
+$summary-btn-hover-bg-color: #cc6600;
+
+.container {
+    margin-top: 20px;
+    .login-warning {
+        align-content: center;
+        text-align: center;
+        .ppppp {
+            padding: 10px;
+        }
+        .btn-login-warning {
+            width: 180px;
+            height: 30px;
+            font-weight: 700;
+            background-color: #254ad0;
+            border: none;
+            color: #fff;
+            &:hover {
+                background-color: #202123;
+            }
+        }
+    }
+}
+
+.breadcrumb {
+    font-size: 18px;
+}
+
+// Cập nhật kiểu cho bảng sản phẩm
+.product-list {
+    padding: 20px;
+    background-color: $product-bg-color;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px; // Khoảng cách dưới để tách biệt với phần tổng hợp thanh toán
+
+    .product-table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        border: 1px solid $product-border-color;
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid $product-border-color;
+            color: $product-text-color;
+
+            img {
+                width: 100px;
+            }
+        }
+
+        thead {
+            background-color: $product-header-bg-color;
+            color: $product-header-text-color;
+            font-size: 1.1em;
+            text-transform: uppercase;
+        }
+
+        .product-column {
+            font-size: 0.95em;
+            text-align: center;
+        }
+
+        .product-item {
+            &:hover {
+                background-color: $product-hover-bg-color;
+            }
+        }
+    }
+
+    .quantity-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+
+            .quantity-button {
+                background-color: $btn-bg-color;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                padding: 5px 10px;
+                cursor: pointer;
+                font-size: 1.2em;
+
+                &:hover {
+                    background-color: $btn-hover-bg-color;
+                }
+            }
+        }
+
+        .quantity-input {
+            width: 60px;
+            text-align: center;
+            padding: 5px;
+            border: 1px solid $product-border-color;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+    }
+
+    .remove-button {
+        background-color: $product-remove-btn-bg-color;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 1em;
+
+        &:hover {
+            background-color: $product-remove-btn-hover-bg-color;
+        }
+    }
+}
+
+
+
+
+.card-header {
+    background-color: #f8f9fa; // Màu nền cho header
+    border-bottom: 1px solid #dee2e6;
+    padding: 20px;
+    border-radius: 8px 8px 0 0;
+
+    h4 {
+        font-size: 1.5em;
+        color: #333;
+    }
+
+    .card-body {
+        background-color: #fff; // Màu nền cho body
+        padding: 20px;
+
+        div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+
+            h6 {
+                font-size: 1em;
+                color: #555;
+            }
+
+            &.payment {
+                flex-direction: column;
+                align-items: flex-start;
+
+                .payment-ck,
+                .payment-tm {
+                    display: flex;
+                    align-items: center;
+
+                    input[type="radio"] {
+                        margin-right: 10px;
+                        width: 20px;
+                    }
+
+                    label {
+                        font-size: 0.9em;
+                    }
+                }
+            }
+        }
+    }
+
+    .card-footer {
+        background-color: #f8f9fa; // Màu nền cho footer
+        padding: 20px;
+        border-top: 1px solid #dee2e6;
+        border-radius: 0 0 8px 8px;
+
+        div {
+            display: flex;
+            justify-content: space-between;
+
+            h5 {
+                font-size: 1.25em;
+                color: #333;
+            }
+        }
+    }
+
+    .primary-btn {
+        background: map.get($theme-color, "main");
+        color: white;
+        padding: 10px 46px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 1em;
+        margin: 10px 0;
+
+        a {
+            color: white; // Màu chữ của link
+            text-decoration: none;
+        }
+
+        &:hover {
+            background: #bc514c;
+        }
+    }
+}
+// Cập nhật kiểu cho phần tổng hợp thanh toán
+.cart-summary {
+    background-color: $product-bg-color; // Sử dụng màu nền giống với bảng sản phẩm
+    border-radius: 8px;
+    //border: 1px solid $product-border-color; // Sử dụng màu viền giống với bảng sản phẩm
+    //padding: 20px;
+    //box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: 20px; // Khoảng cách trên để tách biệt với bảng sản phẩm
+    padding: 10px;
+    h2 {
+        background-color: $product-header-bg-color; // Sử dụng màu nền giống với tiêu đề bảng sản phẩm
+        color: $product-header-text-color; // Màu chữ giống với tiêu đề bảng sản phẩm
+        padding: 15px;
+        border-radius: 8px 8px 0 0;
+        font-size: 1.5em;
+        margin: 0;
+        border-bottom: 1px solid $product-border-color; // Thêm viền dưới giống như bảng sản phẩm
+    }
+
+    p {
+        font-size: 1.1em;
+        color: $product-text-color; // Màu chữ giống với bảng sản phẩm
+        margin: 15px 0;
+    }
+
+    .checkout-button {
+        background-color: $btn-bg-color; // Sử dụng màu nền nút giống với bảng sản phẩm
+        color: white;
+        border: none;
+        border-radius: 4px;
+        padding: 10px 20px;
+        font-size: 1.1em;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        &:hover {
+            background-color: $btn-hover-bg-color; // Sử dụng màu nền khi hover giống với bảng sản phẩm
+        }
+    }
+}
